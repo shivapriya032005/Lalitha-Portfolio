@@ -918,7 +918,7 @@ body {
 }
 
 .internship-item h3 {
-  color: var(--color-accent);
+  color: white;
   margin-bottom: 5px;
 }
 
@@ -2079,3 +2079,4 @@ footer {
     font-size: 13px;
   }
 }
+
