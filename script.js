@@ -292,3 +292,10 @@ if (form) {
     });
   });
 }
+
+// Stagger animation for course cards
+const courseCards = document.querySelectorAll('.course-card');
+
+courseCards.forEach((card,index)=>{
+card.style.transitionDelay=`${index*0.15}s`;
+});
