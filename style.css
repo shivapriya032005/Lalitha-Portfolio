@@ -1517,28 +1517,6 @@ box-shadow:0 25px 60px rgba(0,0,0,.5);
 transform:scale(1.4);
 }
 
-.course-icon{
-
-width:70px;
-height:70px;
-
-margin:auto;
-
-border-radius:50%;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-font-size:32px;
-
-background:var(--color-primary-gradient);
-
-margin-bottom:25px;
-
-box-shadow:var(--shadow-md);
-}
-
 .course-card h3{
 
 color:var(--color-text);
