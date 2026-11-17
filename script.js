@@ -1,21 +1,39 @@
-// Scroll Reveal Animation
+/* ---------- Scroll reveal + navbar (throttled with rAF) ---------- */
+const header = document.querySelector('.site-header');
+
 function revealOnScroll() {
-  const reveals = document.querySelectorAll('.reveal');
-
-  reveals.forEach(reveal => {
-    const windowHeight = window.innerHeight;
-    const elementTop = reveal.getBoundingClientRect().top;
-    const elementVisible = 150;
-
-    if (elementTop < windowHeight - elementVisible) {
-      reveal.classList.add('active');
-    } else {
-      reveal.classList.remove('active');
-    }
+  const threshold = window.innerHeight - 150;
+  document.querySelectorAll('.reveal').forEach(el => {
+    el.classList.toggle('active', el.getBoundingClientRect().top < threshold);
   });
 }
 
-// Certifications Carousel
+function handleNavbarScroll() {
+  if (header) header.classList.toggle('scrolled', window.scrollY > 100);
+}
+
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    revealOnScroll();
+    handleNavbarScroll();
+    ticking = false;
+  });
+}, { passive: true });
+
+revealOnScroll();
+handleNavbarScroll();
+
+const logo = document.querySelector('.site-header h2');
+if (logo) logo.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+/* ---------- Footer year ---------- */
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+/* ---------- Certifications carousel ---------- */
 const track = document.querySelector('.carousel-track');
 const prevBtn = document.querySelector('.carousel-btn.prev');
 const nextBtn = document.querySelector('.carousel-btn.next');
@@ -26,33 +44,25 @@ if (track && prevBtn && nextBtn) {
   const getCardWidth = () => {
     const card = track.children[0];
     if (!card) return 0;
-
     const styles = window.getComputedStyle(track);
-    const gapValue = parseFloat(styles.columnGap || styles.gap || '0');
-    return card.getBoundingClientRect().width + (Number.isNaN(gapValue) ? 0 : gapValue);
+    const gap = parseFloat(styles.columnGap || styles.gap || '0');
+    return card.getBoundingClientRect().width + (Number.isNaN(gap) ? 0 : gap);
   };
 
   const getVisibleCount = () => {
-    const width = window.innerWidth;
-    if (width < 600) return 1;
-    if (width < 900) return 2;
-    return 3; // desktop
+    const w = window.innerWidth;
+    return w < 600 ? 1 : w < 900 ? 2 : 3;
   };
 
-  const maxIndex = () => {
-    return Math.max(0, track.children.length - getVisibleCount());
-  };
+  const maxIndex = () => Math.max(0, track.children.length - getVisibleCount());
 
   const updateCarousel = () => {
     const cardWidth = getCardWidth();
     if (!cardWidth) return;
-
-    const visibleCount = getVisibleCount();
-    const containerWidth = track.parentElement.getBoundingClientRect().width;
-
-    if (visibleCount <= 1) {
-      const centerOffset = Math.max(0, (containerWidth - cardWidth) / 2);
-      track.style.transform = `translateX(${centerOffset - index * cardWidth}px)`;
+    if (getVisibleCount() <= 1) {
+      const containerWidth = track.parentElement.getBoundingClientRect().width;
+      const center = Math.max(0, (containerWidth - cardWidth) / 2);
+      track.style.transform = `translateX(${center - index * cardWidth}px)`;
     } else {
       track.style.transform = `translateX(-${index * cardWidth}px)`;
     }
@@ -60,25 +70,15 @@ if (track && prevBtn && nextBtn) {
 
   nextBtn.addEventListener('click', () => {
     const max = maxIndex();
-    if (max === 0) return;
-
-    if (index < max) {
-      index++;
-    } else {
-      index = 0;
-    }
+    if (!max) return;
+    index = index < max ? index + 1 : 0;
     updateCarousel();
   });
 
   prevBtn.addEventListener('click', () => {
     const max = maxIndex();
-    if (max === 0) return;
-
-    if (index > 0) {
-      index--;
-    } else {
-      index = max;
-    }
+    if (!max) return;
+    index = index > 0 ? index - 1 : max;
     updateCarousel();
   });
 
@@ -87,72 +87,38 @@ if (track && prevBtn && nextBtn) {
     updateCarousel();
   });
 
-  // Init
   updateCarousel();
 }
 
-
-
-// Navbar Scroll Behavior
-function handleNavbarScroll() {
-  const header = document.querySelector('.site-header');
-  if (window.scrollY > 100) { // Adjust threshold as needed
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
-}
-
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('scroll', handleNavbarScroll);
-
-// Mobile Menu Toggle
+/* ---------- Mobile menu ---------- */
 const toggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
 
 if (toggle && navLinks) {
   const NAV_VISIBLE_BREAKPOINT = 1024;
 
-  const closeMenu = () => {
-    navLinks.classList.remove('show');
-    toggle.classList.remove('active');
-    toggle.setAttribute('aria-expanded', 'false');
+  const setMenu = open => {
+    navLinks.classList.toggle('show', open);
+    toggle.classList.toggle('active', open);
+    toggle.setAttribute('aria-expanded', String(open));
   };
 
-  toggle.addEventListener('click', () => {
-    const shouldShow = !navLinks.classList.contains('show');
-    navLinks.classList.toggle('show', shouldShow);
-    toggle.classList.toggle('active', shouldShow);
-    toggle.setAttribute('aria-expanded', shouldShow.toString());
-  });
+  toggle.addEventListener('click', () => setMenu(!navLinks.classList.contains('show')));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => closeMenu());
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navLinks.classList.contains('show')) {
+      setMenu(false);
+      toggle.focus();
+    }
   });
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth > NAV_VISIBLE_BREAKPOINT) {
-      closeMenu();
-    }
+    if (window.innerWidth > NAV_VISIBLE_BREAKPOINT) setMenu(false);
   });
 }
 
-
-
-// Initial checks
-revealOnScroll();
-handleNavbarScroll();
-
-const emailServiceAvailable = typeof window.emailjs !== 'undefined';
-
-if (emailServiceAvailable) {
-  (function() {
-    emailjs.init('lrKZo9vsEWTomBtV5');
-  })();
-} else {
-  console.warn('EmailJS library is not loaded. Contact form submissions will be disabled.');
-}
-
+/* ---------- Toasts ---------- */
 const toastRegion = document.querySelector('.toast-region');
 
 function showToast({ message, status = 'info' }) {
@@ -162,93 +128,93 @@ function showToast({ message, status = 'info' }) {
   toast.className = `toast ${status}`;
   toast.setAttribute('role', 'alert');
   toast.setAttribute('aria-live', 'assertive');
-  toast.innerHTML = `<p>${message}</p>`;
-
+  const p = document.createElement('p');
+  p.textContent = message;
+  toast.appendChild(p);
   toastRegion.appendChild(toast);
 
-  setTimeout(() => {
-    toast.classList.add('visible');
-  }, 10);
-
+  setTimeout(() => toast.classList.add('visible'), 10);
   setTimeout(() => {
     toast.classList.remove('visible');
-    const cleanup = () => {
-      if (toast.isConnected) {
-        toast.remove();
-      }
-    };
-
+    const cleanup = () => { if (toast.isConnected) toast.remove(); };
     toast.addEventListener('transitionend', cleanup, { once: true });
     toast.addEventListener('animationend', cleanup, { once: true });
-
     setTimeout(cleanup, 600);
   }, 4000);
 }
 
-const THEME_STORAGE_KEY = 'preferred-theme';
-const themeToggleBtn = document.getElementById('themeToggle');
-const matchMediaDark = window.matchMedia('(prefers-color-scheme: dark)');
+/* ---------- Theme (storage-safe) ---------- */
+const THEME_KEY = 'preferred-theme';
+const themeBtn = document.getElementById('themeToggle');
+const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+const store = {
+  get(key) { try { return localStorage.getItem(key); } catch { return null; } },
+  set(key, value) { try { localStorage.setItem(key, value); } catch { /* storage unavailable */ } }
+};
 
 function updateThemeToggleUI(theme) {
-  if (!themeToggleBtn) return;
-  const icon = themeToggleBtn.querySelector('.theme-toggle__icon');
-  const label = themeToggleBtn.querySelector('.theme-toggle__label');
+  if (!themeBtn) return;
   const isLight = theme === 'light';
-
-  themeToggleBtn.classList.toggle('is-light', isLight);
-  if (icon) {
-    icon.textContent = isLight ? '☀️' : '🌙';
-  }
-  if (label) {
-    label.textContent = isLight ? 'Light mode' : 'Dark mode';
-  }
-  themeToggleBtn.setAttribute('aria-label', `Switch to ${isLight ? 'dark' : 'light'} mode`);
+  const icon = themeBtn.querySelector('.theme-toggle__icon');
+  const label = themeBtn.querySelector('.theme-toggle__label');
+  themeBtn.classList.toggle('is-light', isLight);
+  if (icon) icon.textContent = isLight ? '☀️' : '🌙';
+  if (label) label.textContent = isLight ? 'Light mode' : 'Dark mode';
+  themeBtn.setAttribute('aria-label', `Switch to ${isLight ? 'dark' : 'light'} mode`);
 }
 
 function applyTheme(theme, { persist = true } = {}) {
-  if (!theme) return;
   document.body.dataset.theme = theme;
-  if (persist) {
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
-  }
+  if (persist) store.set(THEME_KEY, theme);
   updateThemeToggleUI(theme);
 }
 
-function resolveInitialTheme() {
-  const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-  if (storedTheme) return storedTheme;
-  if (document.body.dataset.theme) return document.body.dataset.theme;
-  return matchMediaDark.matches ? 'dark' : 'light';
-}
-
-const initialTheme = resolveInitialTheme();
+const initialTheme = store.get(THEME_KEY) || document.body.dataset.theme || (darkQuery.matches ? 'dark' : 'light');
 applyTheme(initialTheme, { persist: false });
 
-if (!localStorage.getItem(THEME_STORAGE_KEY)) {
-  localStorage.setItem(THEME_STORAGE_KEY, initialTheme);
-}
-
-if (themeToggleBtn) {
-  themeToggleBtn.addEventListener('click', () => {
-    const nextTheme = document.body.dataset.theme === 'light' ? 'dark' : 'light';
-    applyTheme(nextTheme, { persist: true });
+if (themeBtn) {
+  themeBtn.addEventListener('click', () => {
+    applyTheme(document.body.dataset.theme === 'light' ? 'dark' : 'light');
   });
 }
 
-matchMediaDark.addEventListener('change', event => {
-  const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-  if (storedTheme) return; // respect explicit preference
-  applyTheme(event.matches ? 'dark' : 'light', { persist: false });
+darkQuery.addEventListener('change', e => {
+  if (store.get(THEME_KEY)) return;
+  applyTheme(e.matches ? 'dark' : 'light', { persist: false });
 });
 
-function validateForm(formElement) {
-  const fields = Array.from(formElement.querySelectorAll('input[required], textarea[required]'));
-  const firstInvalid = fields.find(field => !field.value.trim());
+/* ---------- Contact form ---------- */
+const emailServiceAvailable = typeof window.emailjs !== 'undefined';
+if (emailServiceAvailable) {
+  emailjs.init('lrKZo9vsEWTomBtV5');
+} else {
+  console.warn('EmailJS library is not loaded. Contact form submissions will be disabled.');
+}
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_RE = /^\+?[\d\s()-]{7,}$/;
+
+function validateForm(formEl) {
+  const fields = Array.from(formEl.querySelectorAll('input[required], textarea[required]'));
+  let firstInvalid = null;
+  let message = 'Please fill in all required fields.';
 
   fields.forEach(field => {
-    field.classList.toggle('has-error', !field.value.trim());
-    if (!field.value.trim()) {
+    const value = field.value.trim();
+    let invalid = !value;
+    if (!invalid && field.type === 'email' && !EMAIL_RE.test(value)) {
+      invalid = true;
+      message = 'Please enter a valid email address.';
+    }
+    if (!invalid && field.type === 'tel' && !PHONE_RE.test(value)) {
+      invalid = true;
+      message = 'Please enter a valid phone number.';
+    }
+    field.classList.toggle('has-error', invalid);
+    if (invalid) {
       field.setAttribute('aria-invalid', 'true');
+      if (!firstInvalid) firstInvalid = field;
     } else {
       field.removeAttribute('aria-invalid');
     }
@@ -256,46 +222,42 @@ function validateForm(formElement) {
 
   if (firstInvalid) {
     firstInvalid.focus();
-    showToast({ message: 'Please fill in all required fields.', status: 'error' });
+    showToast({ message, status: 'error' });
     return false;
   }
-
   return true;
 }
 
 const form = document.getElementById('contact-form');
 
 if (form) {
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const submitLabel = submitBtn ? submitBtn.textContent : '';
 
-    if (!validateForm(form)) {
-      return;
-    }
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!validateForm(form)) return;
 
     if (!emailServiceAvailable) {
       showToast({ message: '📨 Email service unavailable. Please try again later.', status: 'error' });
       return;
     }
 
-    emailjs.sendForm(
-      'service_59n334m',
-      'template_y66apok',
-      this
-    )
-    .then(() => {
-      showToast({ message: '✅ Message sent successfully!', status: 'success' });
-      form.reset();
-    })
-    .catch(() => {
-      showToast({ message: '❌ Failed to send. Please try again.', status: 'error' });
-    });
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+
+    emailjs.sendForm('service_59n334m', 'template_y66apok', form)
+      .then(() => {
+        showToast({ message: '✅ Message sent successfully!', status: 'success' });
+        form.reset();
+      })
+      .catch(() => showToast({ message: '❌ Failed to send. Please try again.', status: 'error' }))
+      .finally(() => {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = submitLabel; }
+      });
   });
 }
 
-// Stagger animation for course cards
-const courseCards = document.querySelectorAll('.course-card');
-
-courseCards.forEach((card,index)=>{
-card.style.transitionDelay=`${index*0.15}s`;
+/* ---------- Course card stagger ---------- */
+document.querySelectorAll('.course-card').forEach((card, i) => {
+  card.style.transitionDelay = `${i * 0.15}s`;
 });
