@@ -2,57 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Lalitha Shivapriya | Portfolio</title>
+  <title>Lalitha Shivapriya | Full Stack Developer & UI/UX Designer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lalitha Shivapriya – Full Stack Developer and UI/UX Designer. Builds AI-powered web and mobile apps with Ruby on Rails, React and React Native. View projects, experience and contact details.">
+  <meta name="theme-color" content="#3b0a6d">
+  <link rel="canonical" href="https://shivapriya032005.github.io/Lalitha-Portfolio/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lalitha Shivapriya | Full Stack Developer & UI/UX Designer">
+  <meta property="og:description" content="Ruby on Rails, React and React Native developer who also designs in Figma. Explore my projects and experience.">
+  <meta property="og:url" content="https://shivapriya032005.github.io/Lalitha-Portfolio/">
+  <meta property="og:image" content="https://shivapriya032005.github.io/Lalitha-Portfolio/profile.png">
 
-  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
   <link rel="icon" type="image/png" href="logo.png">
-
-  <!-- External CSS -->
   <link rel="stylesheet" href="style.css">
+  <noscript><style>.reveal,.course-card{opacity:1;transform:none}</style></noscript>
 </head>
 <body data-theme="dark">
 
 <a class="skip-link" href="#main">Skip to main content</a>
 
-<!-- Navbar -->
 <header class="site-header">
   <h2>Lalitha</h2>
   <div class="header-actions">
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+    <button type="button" class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
   </div>
-  <nav id="navLinks" role="navigation" aria-label="Main Navigation">
-    <ul role="menubar">
-      <li role="none"><a role="menuitem" href="#home">Home</a></li>
-      <li role="none"><a role="menuitem" href="#skills">Skills</a></li>
-      <li role="none"><a role="menuitem" href="#internships">Experience</a></li>
-      <li role="none"><a role="menuitem" href="#projects">Projects</a></li>
-      <li role="none"><a role="menuitem" href="#certifications">Certifications</a></li>
-      <li role="none"><a role="menuitem" href="#achievements">Achievements</a></li>
-      <li role="none"><a role="menuitem" href="#contact">Contact Me</a></li>
+  <nav id="navLinks" aria-label="Main Navigation">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#internships">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact">Contact Me</a></li>
     </ul>
   </nav>
 </header>
 
-
 <main id="main" class="page-content">
 
-<!-- Hero Section -->
 <section class="hero" id="home" aria-labelledby="hero-title">
   <div class="hero-text">
-    <p class="intro" aria-label="Introduction">Hello, I’m</p>
+    <p class="intro">Hello, I’m</p>
     <h1 id="hero-title">LALITHA <span>SHIVAPRIYA</span></h1>
 
     <p class="subtitle">
-      Computer Science & Engineering graduate specializing in Frontend Development and 
-      UI/UX Design with experience in React.js, JavaScript and Figma. 
-      Passionate about building scalable web applications and user-centered digital experiences.
+      Full stack developer with a designer’s eye. I build Ruby on Rails backends and
+      React Native apps at Vzenn Labs, and I enjoy taking an idea from a Figma wireframe
+      all the way to a working product. I care about clean APIs, fast interfaces and
+      experiences that feel easy to use.
     </p>
 
     <p class="education-hero">
@@ -63,25 +68,21 @@
     <div class="hero-buttons">
       <a href="#projects">View Projects</a>
       <a href="#contact">Contact Me</a>
-      <a href="Resume.docx" download class="download-btn">Download Resume</a>
+      <a href="Lalitha_Shivapriya_Resume.pdf" download class="download-btn">Download Resume</a>
     </div>
   </div>
 
   <div class="hero-image">
-    <img src="profile.png" alt="Lalitha Shivapriya">
+    <img src="profile.png" alt="Lalitha Shivapriya" fetchpriority="high">
   </div>
 </section>
 
-<!-- Skills -->
 <section id="skills" class="skills reveal" aria-labelledby="skills-title">
   <div class="skills-container">
-
-    <!-- Left Image -->
     <div class="skills-image">
-      <img src="skills.png" alt="Skills Illustration">
+      <img src="skills.png" alt="" loading="lazy" decoding="async">
     </div>
 
-    <!-- Right Content -->
     <div class="skills-content">
       <h2 class="section-title" id="skills-title">My Skills</h2>
       <p class="skills-subtitle">
@@ -97,14 +98,14 @@
 
       <div class="skill-step">
         <span>2</span>
-        <h3>Web Technologies</h3>
-        <p>HTML, CSS, JavaScript, ReactJS</p>
+        <h3>Web & Backend</h3>
+        <p>HTML, CSS, JavaScript, ReactJS, Ruby on Rails</p>
       </div>
 
       <div class="skill-step">
         <span>3</span>
         <h3>Programming</h3>
-        <p>Python, C</p>
+        <p>Ruby, Python, C</p>
       </div>
 
       <div class="skill-step">
@@ -113,14 +114,11 @@
         <p>MySQL, Git, GitHub</p>
       </div>
     </div>
-
   </div>
 </section>
 
-
-<!-- Internships -->
 <section id="internships" class="internships reveal" aria-labelledby="internships-title">
-  <h2 class="section-title" id="internships-title">Internships</h2>
+  <h2 class="section-title" id="internships-title">Experience</h2>
 
   <div class="internship-timeline">
 
@@ -130,14 +128,14 @@
         <h4>Vzenn Labs</h4>
         <span>June 2026 – Present</span>
         <p>
-          Working as an AI Full Stack Developer at VZENN Labs Pvt. Ltd., developing scalable, 
-          AI-powered web applications using React, Ruby on Rails, and PostgreSQL. Responsible 
-          for building responsive user interfaces, developing backend APIs, integrating AI 
-          capabilities, and delivering reliable, end-to-end software solutions.
+          Building scalable, AI-powered web and mobile applications with Ruby on Rails,
+          React, React Native and PostgreSQL. Designing REST APIs that stream AI model
+          responses to the mobile client, managing database migrations and queries, and
+          delivering reliable end-to-end features.
         </p>
       </div>
     </div>
-    
+
     <div class="internship-item right">
       <div class="content">
         <h3>Frontend Web Developer Intern</h3>
@@ -180,8 +178,6 @@
   </div>
 </section>
 
-
-<!-- Projects -->
 <section id="projects" class="projects reveal" aria-labelledby="projects-title">
   <h2 class="section-title" id="projects-title">Projects</h2>
   <p class="projects-subtitle">
@@ -192,70 +188,70 @@
 
     <div class="project-card tilt-left">
       <span>1</span>
-      <img src="projects/globe.png" alt="Interactive 3D Globe">
+      <img src="projects/globe.png" alt="Interactive 3D Globe" loading="lazy" decoding="async">
       <h3>Interactive 3D Globe</h3>
       <p>HTML, CSS, JavaScript</p>
     </div>
 
     <div class="project-card tilt-center">
       <span>2</span>
-      <img src="projects/lifequest.png" alt="LifeQuest">
+      <img src="projects/lifequest.png" alt="LifeQuest" loading="lazy" decoding="async">
       <h3>LifeQuest</h3>
       <p>Figma, AI</p>
     </div>
 
     <div class="project-card tilt-right">
       <span>3</span>
-      <img src="projects/portfolio.png" alt="Portfolio Website">
+      <img src="projects/portfolio.png" alt="Portfolio Website" loading="lazy" decoding="async">
       <h3>Portfolio Website</h3>
       <p>HTML, CSS, JavaScript</p>
     </div>
 
     <div class="project-card tilt-left">
       <span>4</span>
-      <img src="projects/dairymilk.png" alt="Dairy Milk Prototype">
+      <img src="projects/dairymilk.png" alt="Dairy Milk Prototype" loading="lazy" decoding="async">
       <h3>Dairy Milk Website Prototype</h3>
       <p>Figma, AI</p>
     </div>
 
     <div class="project-card tilt-right">
       <span>5</span>
-      <img src="projects/bts.png" alt="BTS Website Prototype">
+      <img src="projects/bts.png" alt="BTS Website Prototype" loading="lazy" decoding="async">
       <h3>BTS Website Prototype</h3>
       <p>Figma, Wireframer, AI</p>
     </div>
 
     <div class="project-card tilt-center">
       <span>6</span>
-      <img src="projects/steganography.png" alt="Steganography">
+      <img src="projects/steganography.png" alt="Steganography" loading="lazy" decoding="async">
       <h3>Data Hiding using Steganography</h3>
       <p>HTML, CSS, JavaScript</p>
     </div>
 
     <div class="project-card tilt-left">
       <span>7</span>
-      <img src="projects/library.png" alt="Library Management System">
+      <img src="projects/library.png" alt="Library Management System" loading="lazy" decoding="async">
       <h3>Library Management System</h3>
       <p>Python, SQLite3, HTML, CSS</p>
     </div>
 
     <div class="project-card tilt-right">
       <span>8</span>
-      <img src="projects/Quiz.png" alt="Quiz Application">
+      <img src="projects/Quiz.png" alt="Quiz Application" loading="lazy" decoding="async">
       <h3>Quiz Application</h3>
       <p>ReactJS, Figma, AI</p>
     </div>
 
     <div class="project-card tilt-center">
       <span>9</span>
-      <img src="projects/AIT.jpeg" alt="AIT">
+      <img src="projects/AIT.jpeg" alt="AI Tester and Debugger screenshot" loading="lazy" decoding="async">
       <h3>AI Tester and Debugger</h3>
       <p>HTML, CSS, JavaScript, Python(Flask), MySQL</p>
     </div>
 
     <div class="project-card tilt-center">
       <span>10</span>
-      <img src="projects/SFTU.png" alt="SFTU">
+      <img src="projects/SFTU.png" alt="Smart Free Time Utilizer screenshot" loading="lazy" decoding="async">
       <h3>Smart Free Time Utilizer</h3>
       <p>Python (Flask), ReactJS, Tailwind CSS</p>
     </div>
@@ -264,69 +260,61 @@
 </section>
 
 <section id="courses" class="reveal" aria-labelledby="courses-title">
-<h2 class="section-title" id="courses-title">
-Courses & Ongoing Learning
-</h2>
+  <h2 class="section-title" id="courses-title">Courses & Learning</h2>
 
-<div class="course-grid">
+  <div class="course-grid">
 
-<div class="course-card">
-<h3>Software Engineering with AI</h3>
-<span>Masai School + IIT Roorkee</span>
-<p>AI-powered software development practices and workflows.</p>
-</div>
+    <div class="course-card">
+      <h3>Software Development with AI</h3>
+      <span>Masai School + IIT Roorkee</span>
+      <p>AI-powered software development practices and workflows.</p>
+    </div>
 
-<div class="course-card">
-<h3>Java Full Stack Development</h3>
-<span>ExcelR Institute</span>
-<p>Learning frontend, backend, databases and full-stack application development.</p>
-</div>
+    <div class="course-card">
+      <h3>Full Stack Development</h3>
+      <span>ExcelR Institute</span>
+      <p>Frontend, backend, databases and full-stack application development.</p>
+    </div>
 
-<div class="course-card">
-<h3>User Experience Design</h3>
-<span>IBM</span>
-<p>Design principles, research and user-centered interfaces.</p>
-</div>
+    <div class="course-card">
+      <h3>User Experience Design</h3>
+      <span>IBM</span>
+      <p>Design principles, research and user-centered interfaces.</p>
+    </div>
 
-<div class="course-card">
-<h3>Python Game Development</h3>
-<span>Infosys Springboard</span>
-<p>Built interactive gaming experiences with Python.</p>
-</div>
+    <div class="course-card">
+      <h3>Python Game Development</h3>
+      <span>Infosys Springboard</span>
+      <p>Built interactive gaming experiences with Python.</p>
+    </div>
 
-</div>
-
-</div>
-</div>
+  </div>
 </section>
 
-<!-- Certifications -->
 <section id="certifications" class="certifications reveal" aria-labelledby="certifications-title">
   <h2 class="section-title" id="certifications-title">Certifications</h2>
 
   <div class="carousel">
-    <button class="carousel-btn prev">&#10094;</button>
+    <button type="button" class="carousel-btn prev" aria-label="Previous certification">&#10094;</button>
 
     <div class="carousel-track-container">
       <div class="carousel-track">
 
-        <a class="cert-card" href="https://www.credly.com/badges/cac89a26-36b1-499e-8718-3cdb04b0f3d2/linked_in_profile" target="_blank" rel="noopener noreferrer" aria-label="Open certification on LinkedIn: User Experience Design Fundamentals – IBM (Oct 2025)">User Experience Design Fundamentals – IBM (Oct 2025)</a>
-        <a class="cert-card" href="https://www.credly.com/badges/4f58cde7-5f38-4b4b-b815-4c42244302ad/linked_in?t=slsk9k" target="_blank" rel="noopener noreferrer" aria-label="Open certification on LinkedIn: JavaScript – Cisco (May 2023)">JavaScript – Cisco (May 2023)</a>
-        <a class="cert-card" href="https://www.guvi.in/verify-certificate?id=j72N31ue21795A6h81" target="_blank" rel="noopener noreferrer" aria-label="Open certification on LinkedIn: JavaScript – GUVI (Oct 2024)">JavaScript – GUVI (Oct 2024)</a>
-        <a class="cert-card" href="https://moonshot.scaler.com/s/li/5LbAwhuwvQ" target="_blank" rel="noopener noreferrer" aria-label="Open certification on LinkedIn: JavaScript – Scaler (Oct 2024)">JavaScript – Scaler (Oct 2024)</a>
-        <a class="cert-card" href="https://www.linkedin.com/posts/lalitha-shivapriya_tcs-ion-activity-7234131631123357696-OVWc?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEthPUgBr-YCj2NxT-6OwX2Tet7bJkEDdgU" target="_blank" rel="noopener noreferrer" aria-label="Open certification on LinkedIn: TCS iON Career Edge – Young Professional (Sep 2024)">TCS iON Career Edge – Young Professional (Sep 2024)</a>
-        <a class="cert-card" href="https://www.linkedin.com/learning/certificates/06f8509b9ca870af02a202bb1dd21bc60e348117ac900b60b82d2388565defd0?trk=share_certificate" target="_blank" rel="noopener noreferrer" aria-label="Open certification on LinkedIn: What Is Generative AI? – LinkedIn (Nov 2024)">What Is Generative AI? – LinkedIn (Nov 2024)</a>
-        <a class="cert-card" href="https://www.linkedin.com/posts/lalitha-shivapriya_python-infosys-activity-7259227109217193984-ousi?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEthPUgBr-YCj2NxT-6OwX2Tet7bJkEDdgU" target="_blank" rel="noopener noreferrer" aria-label="Open certification on LinkedIn: Python Game Development – Infosys (Nov 2024)">Python Game Development – Infosys (Nov 2024)</a>
+        <a class="cert-card" href="https://www.credly.com/badges/cac89a26-36b1-499e-8718-3cdb04b0f3d2/linked_in_profile" target="_blank" rel="noopener noreferrer" aria-label="View certificate: User Experience Design Fundamentals – IBM (Oct 2025)">User Experience Design Fundamentals – IBM (Oct 2025)</a>
+        <a class="cert-card" href="https://www.credly.com/badges/4f58cde7-5f38-4b4b-b815-4c42244302ad/linked_in?t=slsk9k" target="_blank" rel="noopener noreferrer" aria-label="View certificate: JavaScript – Cisco (May 2023)">JavaScript – Cisco (May 2023)</a>
+        <a class="cert-card" href="https://www.guvi.in/verify-certificate?id=j72N31ue21795A6h81" target="_blank" rel="noopener noreferrer" aria-label="View certificate: JavaScript – GUVI (Oct 2024)">JavaScript – GUVI (Oct 2024)</a>
+        <a class="cert-card" href="https://moonshot.scaler.com/s/li/5LbAwhuwvQ" target="_blank" rel="noopener noreferrer" aria-label="View certificate: JavaScript – Scaler (Oct 2024)">JavaScript – Scaler (Oct 2024)</a>
+        <a class="cert-card" href="https://www.linkedin.com/posts/lalitha-shivapriya_tcs-ion-activity-7234131631123357696-OVWc?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEthPUgBr-YCj2NxT-6OwX2Tet7bJkEDdgU" target="_blank" rel="noopener noreferrer" aria-label="View certificate: TCS iON Career Edge – Young Professional (Sep 2024)">TCS iON Career Edge – Young Professional (Sep 2024)</a>
+        <a class="cert-card" href="https://www.linkedin.com/learning/certificates/06f8509b9ca870af02a202bb1dd21bc60e348117ac900b60b82d2388565defd0?trk=share_certificate" target="_blank" rel="noopener noreferrer" aria-label="View certificate: What Is Generative AI? – LinkedIn (Nov 2024)">What Is Generative AI? – LinkedIn (Nov 2024)</a>
+        <a class="cert-card" href="https://www.linkedin.com/posts/lalitha-shivapriya_python-infosys-activity-7259227109217193984-ousi?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEthPUgBr-YCj2NxT-6OwX2Tet7bJkEDdgU" target="_blank" rel="noopener noreferrer" aria-label="View certificate: Python Game Development – Infosys (Nov 2024)">Python Game Development – Infosys (Nov 2024)</a>
 
       </div>
     </div>
 
-    <button class="carousel-btn next">&#10095;</button>
+    <button type="button" class="carousel-btn next" aria-label="Next certification">&#10095;</button>
   </div>
 </section>
 
-
-<!-- Achievements & Interests -->
 <section id="achievements" class="achievements reveal" aria-labelledby="achievements-title">
   <h2 class="section-title" id="achievements-title">Achievements</h2>
 
@@ -343,61 +331,51 @@ Courses & Ongoing Learning
   </div>
 </section>
 
-
-
-<!-- Contact -->
 <section id="contact" class="contact-section reveal" aria-labelledby="contact-title">
-
   <div class="contact-wrapper-premium">
 
-    <!-- Left Side -->
     <div class="contact-left">
-
       <div class="contact-image-box">
-        <img src="contact.png" alt="Contact Image">
+        <img src="contact.png" alt="" loading="lazy" decoding="async">
       </div>
 
       <div class="contact-info-card">
         <h3>Get in touch</h3>
 
         <div class="info-row">
-          <span class="icon">📞</span>
-          <p>+91 6305289969</p>
+          <span class="icon" aria-hidden="true">📞</span>
+          <p><a href="tel:+916305289969">+91 6305289969</a></p>
         </div>
 
         <div class="info-row">
-          <span class="icon">✉️</span>
-          <p>shivapriya032005@gmail.com</p>
+          <span class="icon" aria-hidden="true">✉️</span>
+          <p><a href="mailto:shivapriya032005@gmail.com">shivapriya032005@gmail.com</a></p>
         </div>
 
         <div class="info-row">
-          <span class="icon">📍</span>
+          <span class="icon" aria-hidden="true">📍</span>
           <p>Suryapet, Telangana, India</p>
         </div>
 
         <div class="social-links">
-          <a href="https://instagram.com/shiva_sriramoju_1/" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+          <a href="https://instagram.com/shiva_sriramoju_1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="" loading="lazy">
           </a>
-          <a href="https://facebook.com/lalithashivapriya" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/174/174848.png" alt="Facebook">
+          <a href="https://facebook.com/lalithashivapriya" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174848.png" alt="" loading="lazy">
           </a>
-          <a href="https://linkedin.com/in/lalitha-shivapriya/" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+          <a href="https://www.linkedin.com/in/lalitha-shivapriya/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="" loading="lazy">
           </a>
-          </a>
-          <a href="https://github.com/shivapriya032005" target="_blank" rel="noopener noreferrer">
-            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+          <a href="https://github.com/shivapriya032005" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="" loading="lazy">
           </a>
         </div>
-
       </div>
-
     </div>
 
-    <!-- Right Side Form -->
     <div class="contact-form-box">
-      <div class="contact-form-header" aria-labelledby="contact-title">
+      <div class="contact-form-header">
         <h2 class="section-title" id="contact-title">Have Some Question?</h2>
         <p class="contact-subtitle">
           Thank you for your interest in my profile. Fill out the form and I’ll get back to you promptly.
@@ -427,34 +405,22 @@ Courses & Ongoing Learning
     </div>
 
   </div>
-
 </section>
-
 
 </main>
 
-<!-- Footer -->
 <footer>
-  <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> All rights reserved by Lalitha Shivapriya | All rights reserved.</p>
+  <p>Copyright &copy; <span id="year"></span> Lalitha Shivapriya. All rights reserved.</p>
 </footer>
 
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
+<button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
   <span class="theme-toggle__icon" aria-hidden="true">💡</span>
   <span class="sr-only theme-toggle__label" aria-live="polite">Dark mode</span>
 </button>
 
 <div class="toast-region" role="status" aria-live="polite" aria-atomic="true"></div>
 
-<!-- External JS -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
